@@ -20,7 +20,6 @@ end
 gem 'jquery-rails'
 
 gem 'pg'
-gem 'devise'
 
 group :development do
   gem 'quiet_assets'
