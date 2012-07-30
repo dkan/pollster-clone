@@ -1,4 +1,10 @@
 <h1>Welcome to the Pollster App</h1>
-<div class="">
-    
+<div class="polls">
+<% @polls.each do |poll| %>
+    <table width="100%">
+        <tr>
+            <td><%= link_to "#{poll.name}", poll_path(poll) %></td>
+        </tr>
+    </table>
+<% end %>
 </div>

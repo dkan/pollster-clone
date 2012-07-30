@@ -1,0 +1,12 @@
+<h1>Edit <%= @poll.name %></h1>
+
+<%= form_for(@poll) do |f| %>
+    <p>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+    </p>
+        <%= f.hidden_field :edit_link %>
+    <p>
+        <%= f.submit class: "btn btn-success btn-large" %>
+    </p>
+<% end %>
