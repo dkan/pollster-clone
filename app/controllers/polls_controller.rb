@@ -15,7 +15,7 @@ class PollsController < ApplicationController
         @poll = Poll.new(params[:poll])
         if @poll.save
             flash[:success] = "Link to edit: #{request.host}:#{request.port}/#{@poll.edit_link}"
-            redirect_to poll_path(@poll)
+            redirect_to edit_poll_path(@poll.edit_link)
         else
             flash.now[:error] = "Poll not created."
             render 'new' 
@@ -23,7 +23,9 @@ class PollsController < ApplicationController
     end
 
     def edit
-        @poll = Poll.find_by_edit_link(params[:edit_link])
+        @poll = Poll.find_by_edit_link(params[:id])
+        @question = @poll.questions.new
+        @questions = @poll.questions.all
     end
 
     def update

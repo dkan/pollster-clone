@@ -3,8 +3,9 @@ PollsterClone::Application.routes.draw do
     root :to => 'polls#index'
   
     resources :polls
+    resources :questions
     
-    match '/:edit_link' => 'polls#edit'
+    match '/:id' => 'polls#edit'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

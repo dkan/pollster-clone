@@ -1,5 +1,6 @@
 class Poll < ActiveRecord::Base
     attr_accessible :name, :edit_link
+    has_many :questions
   
     validates :name, :uniqueness => true, :length => { :minimum => 3 }
 

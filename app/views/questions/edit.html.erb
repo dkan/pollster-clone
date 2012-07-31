@@ -1,0 +1,11 @@
+<h1><%= @question.question %></h1>
+<%= form_for(@question) do |f| %>
+    <p>
+        <%= f.label :question %>
+        <%= f.text_field :question %>
+    </p>
+        <%= f.hidden_field :poll_id %>
+    <p>
+        <%= f.submit class: "btn btn-success btn-large" %>
+    </p>
+<% end %>

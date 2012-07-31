@@ -1,12 +1,39 @@
-<h1>Edit <%= @poll.name %></h1>
+<h1><%= @poll.name %></h1>
 
-<%= form_for(@poll) do |f| %>
-    <p>
-        <%= f.label :name %>
-        <%= f.text_field :name %>
-    </p>
-        <%= f.hidden_field :edit_link %>
-    <p>
-        <%= f.submit class: "btn btn-success btn-large" %>
-    </p>
-<% end %>
+<div class="row">
+    <div class="span6">
+        <%= form_for(@poll) do |f| %>
+            <p>
+                <%= f.label :name %>
+                <%= f.text_field :name %>
+            </p>
+                <%= f.hidden_field :edit_link %>
+            <p>
+                <%= f.submit class: "btn btn-success btn-large" %>
+            </p>
+        <% end %>
+        
+        <% @questions.each do |question| %>
+            <p>
+            <%= question.question %>
+            <%= link_to "Edit", edit_question_path(question)%> | 
+            <%= link_to "Delete", question_path(question), :method => :delete %>
+            </p>
+            
+        <% end %>
+        
+    </div>
+    <div class="span6">
+        <%= form_for(@question) do |q| %>
+            <p>
+                <%= q.label :question %>
+                <%= q.text_field :question, :placeholder => "What's your question?" %>
+            </p>
+            <%= q.hidden_field :poll_id %>
+    
+            <p>
+                <%= q.submit "Add Question",class: "btn btn-success btn-large" %>
+            </p>
+        <% end %>
+    </div>
+</div>
