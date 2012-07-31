@@ -1,2 +1,11 @@
 <h1><%= @poll.name %></h1>
-<h4>Link to poll: <%= "#{request.host}#{request.path}" %></h4>
+<h4>Link to poll: <%= "#{request.host}:#{request.port}#{new_response_path({:id => @poll.id})}" %></h4><br />
+<% @poll.questions.each do |question| %>
+    <h4><%= question.question %></h4><br />
+    <% question.answers.each do |answer| %>
+        <p><%= answer.body %></p>
+    <% end%>
+    <br />
+<% end %>
+
+<p><%= link_to "Edit Page", edit_poll_path({:id => @poll.edit_link}) %></p>

@@ -3,7 +3,7 @@
 <% @polls.each do |poll| %>
     <table width="100%">
         <tr>
-            <td><%= link_to "#{poll.name}", poll_path(poll) %></td>
+            <td><%= link_to "#{poll.name}", new_response_path({:id => poll.id}) %></td>
         </tr>
     </table>
 <% end %>

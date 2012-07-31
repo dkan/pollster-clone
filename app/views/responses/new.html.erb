@@ -1,0 +1,18 @@
+<h1><%= @poll.name %></h1>
+
+<%= form_for(@response) do |r| %>
+
+    <% @response.answers.each do |answer| %>
+    <%= answer.question.question %>
+        <p>
+            <%= r.fields_for :answers, answer do |f| %>
+                <%= f.text_field :body %>
+                <%= f.hidden_field :response_id, :value => "#{Response.last.nil? ? 1 : Response.last.id+1}" %>
+                <%= f.hidden_field :question_id, :value => "#{answer.question.id}" %>
+            <% end %>
+        </p>
+    <% end %>
+    
+        <p><%= r.hidden_field :poll_id, :value => "#{@poll.id}"%></p>
+        <%= r.submit "Submit Survey", class: "btn btn-large btn-success", id: "response" %>
+    <% end %>

@@ -4,6 +4,8 @@ PollsterClone::Application.routes.draw do
   
     resources :polls
     resources :questions
+    resources :responses
+    resources :answers
     
     match '/:id' => 'polls#edit'
 
